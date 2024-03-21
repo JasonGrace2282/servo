@@ -15,7 +15,9 @@ void setup()
 void loop()
 {
   // move forward for one second
-  car.moveFor(1000);
+  // at speed 1 (forward/clockwise, very slow)
+  // -90 is backward/anticlockwise fast
+  car.moveFor(1000, 1);
   // stop for one second
   car.stop();
   delay(1000);
