@@ -78,23 +78,3 @@ void TwoWheelCar::stopFor()
   leftWheel.stopSpinning();
   rightWheel.stopSpinning();
 }
-
-/*
-Demo code
-*/
-/*
-TwoWheelCar car;
-
-void setup()
-{
-  Serial.begin(9600);
-  car.init(9, 93, 11, 93);
-}
-
-void loop()
-{
-  car.moveFor(1000);
-  car.stop();
-  delay(1000);
-}
-*/
