@@ -19,7 +19,6 @@ void loop()
   // -90 is backward/anticlockwise fast
   car.moveFor(1000, 1);
   // stop for one second
-  car.stop();
-  delay(1000);
+  car.stopFor(1000);
 }
 ```
