@@ -2,10 +2,10 @@
 
 class Wheel {
   public:
-  	int turningPoint;
+  	double turningPoint;
   	Servo servo;
   
-  	void init(int pin, int turning = 93)
+  	void init(int pin, double turning = 93.0)
     {
       turningPoint = turning;
       
@@ -17,7 +17,7 @@ class Wheel {
   	void stopSpinning();
 };
 
-void Wheel::setSpeed(int speed)
+void Wheel::setSpeed(double speed)
 {
   Serial.println(speed);
   speed= -1 * speed + turningPoint;
@@ -46,35 +46,36 @@ class TwoWheelCar {
       rightWheel.init(rightWheelPin, rightWheelZero);
     }
   
-  	void moveFor(int time, int speed);
-  	void turnRightFor(int time, int innerSpeed, int outerSpeed);
-  	void turnLeftFor(int time, int innerSpeed, int outerSpeed);
-  	void stop();
+  	void moveFor(long time, int speed);
+  	void turnRightFor(long time, int innerSpeed, int outerSpeed);
+  	void turnLeftFor(long time, int innerSpeed, int outerSpeed);
+  	void stopFor(int time);
 };
 
-void TwoWheelCar::moveFor(int time, int speed = 1)
+void TwoWheelCar::moveFor(long time, int speed = 1)
 {
   rightWheel.setSpeed(speed);
   leftWheel.setSpeed(-1*speed);
-  delay(seconds);
+  delay(time);
 }
 
-void TwoWheelCar::turnRightFor(int time, int innerSpeed, int outerSpeed)
+void TwoWheelCar::turnRightFor(long time, int innerSpeed, int outerSpeed)
 {
   leftWheel.setSpeed(-1 * outerSpeed);
   rightWheel.setSpeed(-1 * innerSpeed);
   delay(time);
 }
 
-void TwoWheelCar::turnLeftFor(int time, int innerSpeed, int outerSpeed)
+void TwoWheelCar::turnLeftFor(long time, int innerSpeed, int outerSpeed)
 {
   leftWheel.setSpeed(outerSpeed);
   rightWheel.setSpeed(innerSpeed);
   delay(time);
 }
 
-void TwoWheelCar::stopFor()
+void TwoWheelCar::stopFor(int time)
 {
   leftWheel.stopSpinning();
   rightWheel.stopSpinning();
+  delay(time);
 }
