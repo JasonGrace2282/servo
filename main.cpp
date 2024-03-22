@@ -13,7 +13,7 @@ class Wheel {
       
     } 
   
-  	void setSpeed(int speed);
+  	void setSpeed(double speed);
   	void stopSpinning();
 };
 
